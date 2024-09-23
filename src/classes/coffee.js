@@ -2,6 +2,10 @@
 
 import CoffeeMachine from "./coffeeMachine";
 
+/**
+ * A class for making the correct coffee based on the coffee type and it's ingredients
+ * @class
+ */
 class Coffee {
     /**
      * @param {number} coffeeBeans The amount of coffee beans in g

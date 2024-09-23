@@ -3,6 +3,13 @@
 import { coffeeIngredients } from "../helpers";
 import Coffee from "./coffee";
 
+/**
+ * Make latte coffee
+ * @class
+ * @classdesc A latte class
+ * @constructor Latte
+ * @extends Coffee
+ */
 class Latte extends Coffee {
     constructor() {
         const { latte } = coffeeIngredients;

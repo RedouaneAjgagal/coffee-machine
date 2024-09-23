@@ -1,11 +1,15 @@
 //@ts-check
 
+/**
+ * A class of the coffee machine that has all the coffee ingredients
+ * @class
+ */
 class CoffeeMachine {
     static totalCoffeeBeans = 650;
     static totalWater = 11500;
     static totalMilk = 2700;
     static totalMoney = 13;
-
+    
     /**
      * Consume the ingredients from the coffee machine to make coffee
      * @param {number} coffeeBeans The amount of coffee beans in g

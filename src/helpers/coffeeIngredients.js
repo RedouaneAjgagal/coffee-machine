@@ -10,6 +10,7 @@
 
 /**
  * @typedef {Object} CoffeeTypes
+ * @property {CoffeeIngredient} regularCoffee
  * @property {CoffeeIngredient} espresso
  * @property {CoffeeIngredient} latte
  * @property {CoffeeIngredient} cappuccino
@@ -17,6 +18,12 @@
 
 /** @type {CoffeeTypes} */
 const coffeeIngredients = {
+    regularCoffee: {
+        coffeeBeans: 15,
+        milk: 50,
+        water: 200,
+        price: 5
+    },
     espresso: {
         coffeeBeans: 16,
         milk: 0,

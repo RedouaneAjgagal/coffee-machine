@@ -24,7 +24,7 @@ class Coffee {
      * The amount of cups available based on the coffee type
      * @returns {number} Available cups
      */
-    availableCups() {
+    _availableCups() {
         return CoffeeMachine.availableCups(this.coffeeBeans, this.water, this.milk);
     }
 
@@ -34,8 +34,8 @@ class Coffee {
      * @param {number} cups The amount of cups to make at once (default: 1)
      * @returns {string} Able or unable to make that amount of cups a message string is returned
      */
-    makeCoffee(coffeeType, cups = 1) {
-        const availableCups = this.availableCups() >= cups;
+    _makeCoffee(coffeeType, cups = 1) {
+        const availableCups = this._availableCups() >= cups;
 
         if (!availableCups) return `I can't make any more ${coffeeType}`;
 

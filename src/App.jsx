@@ -1,52 +1,41 @@
 //@ts-check
-import React, { useEffect, useState } from "react";
-import { RegularCoffee, Espresso, Latte, CoffeeMachine } from "./classes";
+
+import React, { useState } from "react";
 
 const App = () => {
+  /**
+   * @typedef {("owner" | "customer")} User
+   */
 
-  // const [rerender, setIsRerender] = useState(false);
+  /** @type {[User | null, React.Dispatch<React.SetStateAction<User | null>>]} */
+  const [user, setUser] = useState(/** @type {User | null} */(null));
 
-  const [message, setMessage] = useState("Let's make coffee");
+  /**
+   * @type {Array.<User>}
+   */
+  const users = ["customer", "owner"];
 
-  const regularCoffee = new RegularCoffee();
-  const espressoCoffee = new Espresso();
-  const latteCoffee = new Latte();
-
-  const makeEspresso = () => {
-    const message = espressoCoffee.maker();
-    coffeeMachineLogger();
-    setMessageHandler(message);
+  const selectedUserComponents = {
+    customer: <div>Customer</div>,
+    owner: <div>Owner</div>
   };
 
-  const makeLatte = () => {
-    const message = latteCoffee.maker();
-    coffeeMachineLogger();
-    setMessageHandler(message);
-  };
-
-  const setMessageHandler = (message) => {
-    setMessage(message);
-  }
-
-  const coffeeMachineLogger = () => {
-    console.log({
-      milk: CoffeeMachine.totalMilk,
-      water: CoffeeMachine.totalWater,
-      coffeeBeans: CoffeeMachine.totalCoffeeBeans,
-      money: CoffeeMachine.totalMoney,
-    });
-  }
-
-  coffeeMachineLogger();
+  const selectedUser = !user
+    ? <p className="text-center">Select your role</p>
+    : selectedUserComponents[user];
 
   return (
-    <div className="p-4 flex gap-4">
-      <button onClick={makeEspresso} className="bg-stone-700 text-white p-3 rounded">Make Espresso</button>
-      <button onClick={makeLatte} className="bg-amber-800 text-white p-3 rounded">Make Latte</button>
-
-      <div>
-        <p>{message}</p>
-      </div>
+    <div className="p-4 flex flex-col gap-4 max-w-[35rem] m-auto">
+      <h1 className="text-center text-2xl font-medium text-neutral-800">Coffee Machine Simulator</h1>
+      {selectedUser}
+      {!user ?
+        <div className="flex items-center justify-evenly">
+          {users.map(user => (
+            <button key={user} onClick={() => setUser(user)} className="p-4 rounded border-2 min-w-28 font-medium text-neutral-800 border-slate-400">{user}</button>
+          ))}
+        </div>
+        : <button onClick={() => setUser(null)}>Back</button>
+      }
     </div>
   )
 }

@@ -34,7 +34,7 @@ class RegularCoffee extends Coffee {
      * @returns {AmountOfCupsReturns}
      */
     amountOfCups(cups) {
-        const availableCups = this.availableCups();
+        const availableCups = this._availableCups();
         const isAvailableCups = availableCups >= cups;
 
         let message = "";
@@ -62,7 +62,7 @@ class RegularCoffee extends Coffee {
 
         if (!isAvailableCups) return message;
 
-        this.makeCoffee("regular coffee", cups);
+        this._makeCoffee("regular coffee", cups);
 
         const successMessage = `Successfully made ${cups} cups of coffee`;
         return successMessage;

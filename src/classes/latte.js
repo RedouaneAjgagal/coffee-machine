@@ -29,7 +29,7 @@ class Latte extends Coffee {
      * - "i can't make any more latte" (unable to make)
      */
     maker() {
-        return this.makeCoffee("latte");
+        return this._makeCoffee("latte");
     }
 };
 

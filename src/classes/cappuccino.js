@@ -29,7 +29,7 @@ class Cappuccino extends Coffee {
      * - "i can't make any more cappuccino" (unable to make)
      */
     maker() {
-        return this.makeCoffee("cappuccino");
+        return this._makeCoffee("cappuccino");
     };
 };
 

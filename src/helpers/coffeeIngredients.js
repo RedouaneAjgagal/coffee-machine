@@ -22,7 +22,7 @@ const coffeeIngredients = {
         coffeeBeans: 15,
         milk: 50,
         water: 200,
-        price: 5
+        price: 0
     },
     espresso: {
         coffeeBeans: 16,

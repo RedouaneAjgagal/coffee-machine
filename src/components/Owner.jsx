@@ -1,12 +1,17 @@
-import React from 'react'
+//@ts-check
+
+import React from "react";
+import MakeRegularCoffeeForm from "./MakeRegularCoffeeForm";
 
 /**
- * 
+ * Owner actions component
  * @returns {React.JSX.Element}
  */
 const Owner = () => {
     return (
-        <div>Owner</div>
+        <div>
+            <MakeRegularCoffeeForm />
+        </div>
     )
 }
 

@@ -3,6 +3,11 @@
 import Coffee from "./coffee";
 import { coffeeIngredients } from "../helpers";
 
+/**
+ * @typedef {Object} AmountOfCupsReturns
+ * @property {string} message a status message depends on the provided amount of cups if they are available or not based on the machine ingredients
+ * @property {boolean} isAvailableCups if the cups available then return true else false 
+ */
 
 /**
  * Make regular coffee
@@ -21,12 +26,6 @@ class RegularCoffee extends Coffee {
             regularCoffee.price
         );
     }
-
-    /**
-     * @typedef {Object} AmountOfCupsReturns
-     * @property {string} message a status message depends on the provided amount of cups if they are available or not based on the machine ingredients
-     * @property {boolean} isAvailableCups if the cups available then return true else false 
-     */
 
     /**
      * Check if the coffee machine has enough ingredients to make the provided amount of cups
@@ -55,18 +54,23 @@ class RegularCoffee extends Coffee {
     /**
      * Make many regular coffee cups at once
      * @param {number} cups the amount of cups the user wants to make at once
-     * @returns {string} a status message depends on the provided amount of cups if they are available or not based on the machine ingredients
+     * @returns {AmountOfCupsReturns} a status message and a boolean depends on the provided amount of cups if they are available or not based on the machine ingredients
      */
     maker(cups) {
-        const { isAvailableCups, message } = this.amountOfCups(cups);
+        const amountOfCupsResponse = this.amountOfCups(cups);
 
-        if (!isAvailableCups) return message;
+        if (!amountOfCupsResponse.isAvailableCups) return amountOfCupsResponse;
 
         this._makeCoffee("regular coffee", cups);
 
         const successMessage = `Successfully made ${cups} cups of coffee`;
-        return successMessage;
+        return {
+            message: successMessage,
+            isAvailableCups: amountOfCupsResponse.isAvailableCups
+        };
     }
 };
 
 export default RegularCoffee;
+
+

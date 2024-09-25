@@ -1,6 +1,7 @@
 //@ts-check
 
 import React from 'react'
+import Owner from './Owner';
 
 /**
  * @typedef {Object} UserType
@@ -16,7 +17,7 @@ const SelectedRole = (props) => {
 
     const selectedUserComponents = {
         customer: <div>Customer</div>,
-        owner: <div>Owner</div>
+        owner: <Owner />
     };
 
     const selectedUserComponent = selectedUserComponents[props.user];

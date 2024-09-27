@@ -26,7 +26,7 @@ const App = () => {
     : <SelectedRole user={user} />;
 
   return (
-    <div className="p-4 flex flex-col gap-4 max-w-[35rem] m-auto">
+    <div className="p-4 flex flex-col gap-4 max-w-[55rem] m-auto">
       <h1 className="text-center text-2xl font-medium text-neutral-800">Coffee Machine Simulator</h1>
       {selectedUserComponent}
       {!user ?

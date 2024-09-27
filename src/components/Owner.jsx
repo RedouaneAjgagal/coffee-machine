@@ -2,6 +2,7 @@
 
 import React from "react";
 import MakeRegularCoffeeForm from "./MakeRegularCoffeeForm";
+import FillCoffeeMachine from "./FillCoffeeMachine";
 
 /**
  * Owner actions component
@@ -10,7 +11,10 @@ import MakeRegularCoffeeForm from "./MakeRegularCoffeeForm";
 const Owner = () => {
     return (
         <div>
-            <MakeRegularCoffeeForm />
+            <div className="grid grid-cols-2 gap-8">
+                <MakeRegularCoffeeForm />
+                <FillCoffeeMachine />
+            </div>
         </div>
     )
 }

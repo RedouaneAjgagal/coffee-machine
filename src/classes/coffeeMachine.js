@@ -40,6 +40,19 @@ class CoffeeMachine {
         const availableCups = Math.min(amountOfBeans, amountOfWater, amountOfMilk);
         return availableCups;
     };
+
+    /**
+     * Fill the coffee machine with ingredients
+     * @param {number} coffeeBeans The amount of coffee beans in g
+     * @param {number} milk The amount of water in ml
+     * @param {number} water The amount of water in ml
+     * @returns {void}
+     */
+    static fill(coffeeBeans, milk, water) {
+        this.totalCoffeeBeans += coffeeBeans;
+        this.totalMilk += milk;
+        this.totalWater += water;
+    }
 };
 
 export default CoffeeMachine;

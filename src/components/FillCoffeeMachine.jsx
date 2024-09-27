@@ -1,6 +1,7 @@
 //@ts-check
 
 import React, { useState } from "react"
+import CoffeeMachine from "../classes/coffeeMachine";
 
 /**
  * @typedef {Object} IngredientType
@@ -95,10 +96,14 @@ const FillCoffeeMachine = () => {
     const fillCoffeeMachineHandler = (e) => {
         e.preventDefault();
 
-        console.log(ingredients);
+        const isError = Object.values(ingredients).some(ingredient => ingredient.value < 0);
+        if (isError) return;
 
-
-        console.log("Fill the coffee machine");
+        CoffeeMachine.fill(
+            ingredients.coffeeBeans.value,
+            ingredients.milk.value,
+            ingredients.water.value
+        );
 
         setIngredients(initialIngredients);
     }
@@ -106,19 +111,19 @@ const FillCoffeeMachine = () => {
     return (
         <div className="flex flex-col gap-2">
             <h2 className="text-xl font-medium text-neutral-700">Fill The Coffee Machine</h2>
-            <form onSubmit={fillCoffeeMachineHandler} className="flex flex-col gap-1">
+            <form noValidate onSubmit={fillCoffeeMachineHandler} className="flex flex-col gap-1">
                 <div className="flex gap-4">
                     <div className="flex flex-col gap-1">
                         <label htmlFor="coffeeBeans">Coffee beans: (g)</label>
-                        <input min={1} onChange={setCoffeeBeansHandler} value={ingredients.coffeeBeans.value || ""} type="number" name="coffeeBeans" id="coffeeBeans" className="border py-1 px-2 rounded border-slate-400 w-full" />
+                        <input placeholder="e.g. 90" min={1} onChange={setCoffeeBeansHandler} value={ingredients.coffeeBeans.value || ""} type="number" name="coffeeBeans" id="coffeeBeans" className="border py-1 px-2 rounded border-slate-400 w-full" />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="milk">Milk: (ml)</label>
-                        <input min={1} onChange={setMilkHandler} value={ingredients.milk.value || ""} type="number" name="milk" id="milk" className="border py-1 px-2 rounded border-slate-400 w-full" />
+                        <input placeholder="e.g. 300" min={1} onChange={setMilkHandler} value={ingredients.milk.value || ""} type="number" name="milk" id="milk" className="border py-1 px-2 rounded border-slate-400 w-full" />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="water">Water: (ml)</label>
-                        <input min={1} onChange={setWaterHandler} value={ingredients.water.value || ""} type="number" name="water" id="water" className="border py-1 px-2 rounded border-slate-400 w-full" />
+                        <input placeholder="e.g. 1200" min={1} onChange={setWaterHandler} value={ingredients.water.value || ""} type="number" name="water" id="water" className="border py-1 px-2 rounded border-slate-400 w-full" />
                     </div>
                 </div>
                 <button className="self-start bg-orange-700 text-white border py-2 px-3 font-medium rounded">Fill the coffee machine</button>

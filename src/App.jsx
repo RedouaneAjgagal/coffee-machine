@@ -35,7 +35,7 @@ const App = () => {
             <button key={user} onClick={() => setUser(user)} className="capitalize p-4 rounded border-2 min-w-28 font-medium text-neutral-800 border-slate-400" aria-label="Select your role">{user}</button>
           ))}
         </div>
-        : <button onClick={() => setUser(null)}>Back</button>
+        : <button className="self-start bg-neutral-800 text-white py-2 px-8 rounded font-medium" onClick={() => setUser(null)}>Back</button>
       }
     </div>
   )

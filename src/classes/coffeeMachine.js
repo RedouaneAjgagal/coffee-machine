@@ -9,7 +9,7 @@ class CoffeeMachine {
     static totalWater = 11500;
     static totalMilk = 2700;
     static totalMoney = 13;
-    
+
     /**
      * Consume the ingredients from the coffee machine to make coffee
      * @param {number} coffeeBeans The amount of coffee beans in g
@@ -52,6 +52,14 @@ class CoffeeMachine {
         this.totalCoffeeBeans += coffeeBeans;
         this.totalMilk += milk;
         this.totalWater += water;
+    }
+
+    /**
+     * Take the coffee machine money
+     * @returns {void}
+     */
+    static takeMoney() {
+        this.totalMoney -= this.totalMoney;
     }
 };
 

@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Owner from './Owner';
+import Customer from './Customer';
 
 /**
  * @typedef {Object} UserType
@@ -16,7 +17,7 @@ import Owner from './Owner';
 const SelectedRole = (props) => {
 
     const selectedUserComponents = {
-        customer: <div>Customer</div>,
+        customer: <Customer />,
         owner: <Owner />
     };
 

@@ -10,6 +10,10 @@ import CoffeeMachine from "../classes/coffeeMachine"
 const TakeMoney = () => {
     const [machineMoney, setMachineMoney] = useState(CoffeeMachine.totalMoney);
 
+    /**
+     * Take money from the coffee machine
+     * @returns {void}
+     */
     const takeCoffeeMachineMoneyHandler = () => {
         if (!isMoneyInTheMachine) return;
 

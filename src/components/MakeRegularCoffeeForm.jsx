@@ -60,13 +60,13 @@ const MakeRegularCoffeeForm = () => {
                 <button className="self-start bg-orange-700 text-white border py-2 px-3 font-medium rounded">Check if available</button>
             </form>
             {amountOfCupsReturns.message !== ""
-                ? <div className={`py-2 px-3 rounded flex flex-col gap-1 ${amountOfCupsReturns.isAvailableCups ? "bg-green-300/30 text-green-600 " : "bg-red-300/30 text-red-600 "}`}>
+                ? <article className={`py-2 px-3 rounded flex flex-col gap-1 ${amountOfCupsReturns.isAvailableCups ? "bg-green-300/30 text-green-600 " : "bg-red-300/30 text-red-600 "}`}>
                     <span>{amountOfCupsReturns.message}</span>
                     {amountOfCupsReturns.isAvailableCups
                         ? <button className="bg-green-600 text-white font-medium p-2 rounded uppercase" onClick={makeRegularCupsHandler}>Make {amountOfCups} cups of coffee</button>
                         : null
                     }
-                </div>
+                </article>
                 : null
             }
         </div>

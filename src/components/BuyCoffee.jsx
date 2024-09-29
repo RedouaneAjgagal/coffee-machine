@@ -35,10 +35,17 @@ const BuyCoffee = () => {
         const selectCoffeeTypeHandler = () => {
             setCoffeeType(coffee);
         }
+
+        /**
+         * A checker to check if the selected type of coffee match
+         * @type {boolean}
+         */
+        const isChecked = coffee === coffeeType;
+        
         return (
             <div key={index}>
-                <label htmlFor={coffee} className={`border-2 min-w-28 rounded p-1 font-medium capitalize ${coffee === coffeeType ? "border-neutral-500 text-neutral-700" : "border-neutral-300 text-neutral-500"}`}>{coffee}</label>
-                <input className="sr-only" type="radio" name="coffee type" id={coffee} value={coffee} onChange={selectCoffeeTypeHandler} checked={coffee === coffeeType} hidden />
+                <label aria-selected={isChecked} htmlFor={coffee} className={`hover:cursor-pointer flex justify-center border-2 min-w-28 rounded p-1 font-medium capitalize ${isChecked ? "border-neutral-500 text-neutral-700" : "border-neutral-300 text-neutral-500"}`}>{coffee}</label>
+                <input className="sr-only" type="radio" name="coffee type" id={coffee} value={coffee} onChange={selectCoffeeTypeHandler} checked={isChecked} />
             </div>
         )
     });
@@ -83,9 +90,9 @@ const BuyCoffee = () => {
                     {coffeeTypeButtons}
                 </fieldset>
                 {buyResponse !== ""
-                    ? <div className="p-4 bg-neutral-300/30">
+                    ? <article aria-label="Status message for buying coffee" className="p-4 bg-neutral-300/30">
                         <p className="text-neutral-600">{buyResponse}</p>
-                    </div>
+                    </article>
                     : null
                 }
                 <div className="w-full">

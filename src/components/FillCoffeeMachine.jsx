@@ -1,7 +1,8 @@
 //@ts-check
 
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import CoffeeMachine from "../classes/coffeeMachine";
+import { CoffeeMachineContext } from "../store/CoffeeMachineState";
 
 /**
  * @typedef {Object} IngredientType
@@ -20,7 +21,7 @@ import CoffeeMachine from "../classes/coffeeMachine";
  * @returns {React.JSX.Element}
  */
 const FillCoffeeMachine = () => {
-
+    const coffeeMachineCtx = useContext(CoffeeMachineContext);
 
     /**
      * The initial ingredients when the user load the page
@@ -106,6 +107,7 @@ const FillCoffeeMachine = () => {
         );
 
         setIngredients(initialIngredients);
+        coffeeMachineCtx.onChange();
     }
 
     return (

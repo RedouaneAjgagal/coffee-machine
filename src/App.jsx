@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { SelectedRole } from "./components";
+import CoffeeMachineState from "./components/CoffeeMachineState";
 
 /**
  * Home page, let the user select a role (Customer or Owner)
@@ -28,6 +29,7 @@ const App = () => {
   return (
     <div className="p-4 flex flex-col gap-4 max-w-[55rem] m-auto">
       <h1 className="text-center text-2xl font-medium text-neutral-800">Coffee Machine Simulator</h1>
+      <CoffeeMachineState />
       {selectedUserComponent}
       {!user ?
         <div className="flex items-center justify-evenly">

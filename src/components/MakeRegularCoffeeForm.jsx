@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import RegularCoffee from "../classes/regularCoffee";
+import { useContext } from "react";
+import { CoffeeMachineContext } from "../store/CoffeeMachineState";
 
 /**
  * @typedef {import("../classes/regularCoffee").AmountOfCupsReturns} AmountOfCupsReturns
@@ -12,6 +14,7 @@ import RegularCoffee from "../classes/regularCoffee";
  * @returns {React.JSX.Element}
  */
 const MakeRegularCoffeeForm = () => {
+    const coffeeMachineCtx = useContext(CoffeeMachineContext);
 
     /** @type {[number, React.Dispatch<React.SetStateAction<number>>]} */
     const [amountOfCups, setAmountOfCups] = useState(0);
@@ -49,6 +52,7 @@ const MakeRegularCoffeeForm = () => {
         const makerResponse = regularCoffee.maker(amountOfCups);
 
         setAmountOfCupsReturns(makerResponse);
+        coffeeMachineCtx.onChange();
     }
 
     return (

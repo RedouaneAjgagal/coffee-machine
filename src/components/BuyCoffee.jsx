@@ -1,9 +1,11 @@
 //@ts-check
 
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import Espresso from "../classes/espresso";
 import Cappuccino from "../classes/cappuccino";
 import Latte from "../classes/latte";
+import { CoffeeMachineContext } from "../store/CoffeeMachineState";
+import { coffeeIngredients } from "../helpers";
 
 /**
  * The coffee type the machine can make
@@ -15,6 +17,7 @@ import Latte from "../classes/latte";
  * @returns {React.JSX.Element}
  */
 const BuyCoffee = () => {
+    const coffeeMachineCtx = useContext(CoffeeMachineContext);
 
     /** @type {[CoffeeType, React.Dispatch<React.SetStateAction<CoffeeType>>]} */
     const [coffeeType, setCoffeeType] = useState(/** @type {CoffeeType} */("espresso"));
@@ -41,10 +44,12 @@ const BuyCoffee = () => {
          * @type {boolean}
          */
         const isChecked = coffee === coffeeType;
-        
+
+        const label = `${coffee} ($${coffeeIngredients[coffee].price.toFixed(2)})`;
+
         return (
             <div key={index}>
-                <label aria-selected={isChecked} htmlFor={coffee} className={`hover:cursor-pointer flex justify-center border-2 min-w-28 rounded p-1 font-medium capitalize ${isChecked ? "border-neutral-500 text-neutral-700" : "border-neutral-300 text-neutral-500"}`}>{coffee}</label>
+                <label aria-selected={isChecked} htmlFor={coffee} className={`hover:cursor-pointer flex justify-center border-2 rounded py-2 px-4 font-medium capitalize ${isChecked ? "border-neutral-500 text-neutral-700" : "border-neutral-300 text-neutral-500"}`}>{label}</label>
                 <input className="sr-only" type="radio" name="coffee type" id={coffee} value={coffee} onChange={selectCoffeeTypeHandler} checked={isChecked} />
             </div>
         )
@@ -80,6 +85,7 @@ const BuyCoffee = () => {
         }
 
         setBuyResponse(response);
+        coffeeMachineCtx.onChange();
     }
 
     return (

@@ -1,13 +1,16 @@
 //@ts-check
 
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import CoffeeMachine from "../classes/coffeeMachine"
+import { CoffeeMachineContext } from "../store/CoffeeMachineState";
 
 /**
  * Take money from the coffee machine for the owner role
  * @returns {React.JSX.Element}
  */
 const TakeMoney = () => {
+    const coffeeMachineCtx = useContext(CoffeeMachineContext);
+
     const [machineMoney, setMachineMoney] = useState(CoffeeMachine.totalMoney);
 
     /**
@@ -19,6 +22,7 @@ const TakeMoney = () => {
 
         CoffeeMachine.takeMoney();
         setMachineMoney(CoffeeMachine.totalMoney);
+        coffeeMachineCtx.onChange();
     }
 
     const isMoneyInTheMachine = machineMoney > 0;
